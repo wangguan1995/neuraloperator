@@ -137,7 +137,7 @@ def get_contract_fun(weight, implementation='reconstructed', separable=False):
         else:
             raise ValueError(f'Got unexpected weight type of class {weight.__class__.__name__}')
     else:
-        raise ValueError(f'Got {implementation=}, expected "reconstructed" or "factorized"')
+        raise ValueError(f'Got {implementation}, expected "reconstructed" or "factorized"')
 
 
 class FactorizedSpectralConv(nn.Module):
@@ -242,7 +242,7 @@ class FactorizedSpectralConv(nn.Module):
         if separable:
             if in_channels != out_channels:
                 raise ValueError('To use separable Fourier Conv, in_channels must be equal to out_channels, ',
-                                 f'but got {in_channels=} and {out_channels=}')
+                                 f'but got {in_channels} and {out_channels}')
             weight_shape = (in_channels, *half_total_n_modes)
         else:
             weight_shape = (in_channels, out_channels, *half_total_n_modes)

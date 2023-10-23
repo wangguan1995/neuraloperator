@@ -27,11 +27,13 @@ class MeshDataModule():
         assert base_dir.is_dir(), "Path is not a directory"
 
         #Read train and test indicies
-        with open(base_dir / 'train.txt') as file:
-            train_ind = file.readline().split(',')
+        # with open(base_dir / 'train.txt') as file:
+        #     train_ind = file.readline().split(',')
+        train_ind = [i for i in range(1, 501)]
         
-        with open(base_dir / 'test.txt') as file:
-            test_ind = file.readline().split(',')
+        # with open(base_dir / 'test.txt') as file:
+        #     test_ind = file.readline().split(',')
+        test_ind = [i for i in range(1, 52)]
         
         if n_train is not None:
             if n_train < len(train_ind):

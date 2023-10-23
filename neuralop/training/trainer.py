@@ -104,12 +104,12 @@ class Trainer:
                 x, y = sample['x'], sample['y']
                 
                 if epoch == 0 and idx == 0 and self.verbose and is_logger:
-                    print(f'Training on raw inputs of size {x.shape=}, {y.shape=}')
+                    print(f'Training on raw inputs of size {x.shape}, {y.shape}')
 
                 x, y = self.patcher.patch(x, y)
 
                 if epoch == 0 and idx == 0 and self.verbose and is_logger:
-                    print(f'.. patched inputs of size {x.shape=}, {y.shape=}')
+                    print(f'.. patched inputs of size {x.shape}, {y.shape}')
 
                 x = x.to(self.device)
                 y = y.to(self.device)
@@ -120,7 +120,7 @@ class Trainer:
 
                 out = model(x)
                 if epoch == 0 and idx == 0 and self.verbose and is_logger:
-                    print(f'Raw outputs of size {out.shape=}')
+                    print(f'Raw outputs of size {out.shape}')
 
                 out, y = self.patcher.unpatch(out, y)
                 #Output encoding only works if output is stiched
@@ -128,7 +128,7 @@ class Trainer:
                     out = output_encoder.decode(out)
                     y = output_encoder.decode(y)
                 if epoch == 0 and idx == 0 and self.verbose and is_logger:
-                    print(f'.. Processed (unpatched) outputs of size {out.shape=}')
+                    print(f'.. Processed (unpatched) outputs of size {out.shape}')
 
                 loss = training_loss(out.float(), y)
 

@@ -1,5 +1,6 @@
 import torch
-
+# import sys
+# sys.path.append('/workspace/wangguan/PaddleScience_Private/PaddleScience_submarine')
 from neuralop.datasets.mesh_datamodule import MeshDataModule
 from neuralop.training.losses import total_drag, IregularLpqLoss
 from neuralop.models.integral_transform import IntegralTransform, NeighborSearch
@@ -7,7 +8,7 @@ from neuralop.models.integral_transform import IntegralTransform, NeighborSearch
 #####TEST LOADING DATA#########
 
 #Load ahmed body
-data_mod = MeshDataModule('~/HDD/ahmed', 'case', 
+data_mod = MeshDataModule('./data/', 'case', 
                           query_points=[64,64,64], 
                           n_train=10, 
                           n_test=5, 

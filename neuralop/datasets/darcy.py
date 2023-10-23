@@ -45,7 +45,7 @@ def load_darcy_flow_small(n_train, n_tests,
     """
     for res in test_resolutions:
         if res not in [16, 32]:
-            raise ValueError(f'Only 32 and 64 are supported for test resolution, but got {test_resolutions=}')
+            raise ValueError(f'Only 32 and 64 are supported for test resolution, but got {test_resolutions}')
     path = Path(__file__).resolve().parent.joinpath('data')
     return load_darcy_pt(str(path), 
                          n_train=n_train, n_tests=n_tests, 

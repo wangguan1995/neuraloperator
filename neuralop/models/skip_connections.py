@@ -32,7 +32,7 @@ def skip_connection(in_features, out_features, n_dim=2, bias=False, type="soft-g
     elif type.lower() == 'identity':
         return nn.Identity()
     else:
-        raise ValueError(f"Got skip-connection {type=}, expected one of {'soft-gating', 'linear', 'id'}.")
+        raise ValueError(f"Got skip-connection {type}, expected one of {'soft-gating', 'linear', 'id'}.")
 
 
 class SoftGating(nn.Module):
@@ -55,7 +55,7 @@ class SoftGating(nn.Module):
     def __init__(self, in_features, out_features=None, n_dim=2, bias=False):
         super().__init__()
         if out_features is not None and in_features != out_features:
-            raise ValueError(f"Got {in_features=} and {out_features=}"
+            raise ValueError(f"Got {in_features} and {out_features}"
                              "but these two must be the same for soft-gating")
         self.in_features = in_features
         self.out_features = out_features
